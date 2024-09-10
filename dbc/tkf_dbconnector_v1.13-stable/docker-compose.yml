@@ -1,0 +1,9 @@
+services:
+  db_connector:
+    container_name: ${container_name}
+    image: registry.riedel-bramsche.de/tkf_dbc_v1.13-stable
+    ports:
+      - ${STD_WEBSRV_PORT}:8000
+    volumes: 
+      - ${APACHE_DIR}:/tkf_com 
+    restart: always

@@ -1,0 +1,36 @@
+FROM alpine:3.19
+ENV   ContainerName tkf_dbconnector_v1.13-stable
+ENV   CRON_PATH /etc/crontabs
+ENV   HOST 0.0.0.0
+ENV   PORT 8000
+ENV   CRON_IN_DOCKER true
+ENV   TZ="Europe/Berlin"
+RUN   mkdir /crontab-ui; touch $CRON_PATH/root; chmod +x $CRON_PATH/root
+RUN   mkdir /tkf_com;  chmod 777 tkf_com
+RUN   mkdir /db;  chmod 777 db
+RUN   mkdir -p crontabs/logs
+WORKDIR /crontab-ui
+LABEL maintainer="tkf_weather (m.riedel.1998@t-online.de)"
+LABEL description ${ContainerName}
+RUN apk update && apk upgrade 
+RUN apk --no-cache add nano
+RUN apk --no-cache add php 
+RUN apk --no-cache add php-gd 
+RUN apk --no-cache add php-zlib
+RUN apk --no-cache add php-mysqli 
+RUN apk --no-cache add php-curl 
+RUN apk --no-cache add php-zip
+RUN apk --no-cache add php-bcmath
+RUN   apk --no-cache add \
+      wget \
+      curl \
+      nodejs \
+      npm \
+      supervisor \
+      tzdata
+COPY supervisord.conf /etc/supervisord.conf
+COPY . /crontab-ui
+#COPY comserver /comserver
+RUN   npm install
+EXPOSE $PORT
+CMD ["supervisord", "-c", "/etc/supervisord.conf"]
