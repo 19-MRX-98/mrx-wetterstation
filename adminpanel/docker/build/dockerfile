@@ -1,0 +1,19 @@
+FROM php:8.3.3-apache-bookworm
+LABEL maintainer="Maximilian Riedel (m.riedel.1998@t-online.de)"
+RUN apt-get update && apt-get upgrade -y
+RUN mkdir /tkf_external_logs; chmod 777 /tkf_external_logs
+RUN mkdir /tkf_ini; chmod 777 /tkf_ini
+RUN mkdir /tkf_cp_docker; chmod 777 /tkf_cp_docker
+RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
+RUN docker-php-ext-install pdo_mysql
+RUN apt-get install zlib1g-dev -y
+RUN apt-get install libpng-dev -y
+RUN apt-get install nodejs -y
+RUN apt-get install npm -y
+RUN apt install -y libxml2-dev
+RUN apt install -y libssl-dev
+RUN npm install -y @tabler/core 
+RUN docker-php-ext-install gd
+RUN a2enmod rewrite
+EXPOSE 80
+EXPOSE 443

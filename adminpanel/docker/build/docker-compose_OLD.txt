@@ -1,0 +1,13 @@
+  version: '3'
+  services:
+      php-apache-environment:
+        container_name: cloudpanel-alpha
+        build: .
+        volumes:
+          - /projects/tkf_cloudpanel/tkf_cloudpanel/src:/var/www/html
+          - /projects/tkf_cloudpanel/tkf_cloudpanel/src/config/apache2.conf:/etc/apache2/apache2.conf
+          - /var/run/docker.sock:/var/run/docker.sock
+        ports:
+          - 8080:80
+          - 8443:443
+        restart: always

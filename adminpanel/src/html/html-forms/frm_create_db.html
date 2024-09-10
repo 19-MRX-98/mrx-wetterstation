@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="de" data-bs-theme="auto">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/sidebar.css">
+        <script src="js/bootstrap.bundle.min.js" async></script>
+        <script src="js/sidebar.js" async></script>
+        <script src="js/colormode.js" async></script>
+        <script src="js/popover.js" async></script>
+        <title>Cloudpanel</title>   
+    </head>
+    <body>
+        <?php include("html/nav.php") ?>
+        <center><h1><span class="badge text-bg-secondary">Mit Datenbankserver verbinden</span></h1></center>
+        <form action="/17c59beb8da0a081f2ed7335a17aad273eb84755" method="post">
+            <div style="padding: 1%;" class="container-xl d-flex justify-content-center align-items-center bg-secondary border rounded">
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="inputdbsrv" class="col-form-label">Datenbankserver*</label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="text" id="inputdbsrv" class="form-control" name="inputdbsrv">
+                    </div>
+                    <div class="col-auto">
+                        <span id="help" class="form-text">
+                            <a tabindex="0" class="btn btn-lg btn-danger" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-title="Hilfestellung" data-bs-content="Die Adresse des Datenbankservers kann entweder eine IP-Adresse(lokale Installation) oder eine öffentlich verfügbare Datenbank sein(Cloud). Für weniger Erfahrene empfiehlt sich die Cloudanbindung">Hilfe</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div style="padding: 1%;" class="container-xl d-flex justify-content-center align-items-center bg-secondary border rounded">
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="inputdbuser" class="col-form-label">Datenbankbenutzer*</label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="text" id="inputdbuser" class="form-control" name="inputdbuser">
+                    </div>
+                    <div class="col-auto">
+                        <span id="help" class="form-text">
+                            <a tabindex="0" class="btn btn-lg btn-danger" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-title="Hilfestellung" data-bs-content="Der Datenbankbenutzer ist auf dem Datenbankserver angelegt. Für lokale Installationen kann der Root Benutzer verwendet werden.">Hilfe</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div style="padding: 1%;" class="container-xl d-flex justify-content-center align-items-center bg-secondary border rounded">
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="inputdbusrpw" class="col-form-label">Benutzerpasswort*</label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="password" id="inputdbusrpw" class="form-control" name="inputdbusrpw">
+                    </div>
+                    <div class="col-auto">
+                        <span id="help" class="form-text">
+                            <a tabindex="0" class="btn btn-lg btn-danger" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-title="Hilfestellung" data-bs-content="Das Benutzerpasswort wurde bei der Erstellung des Datenbankservers erzeugt und ist in den meisten Fällen das Root Passwort.">Hilfe</a>
+                        </span>
+                    </div>
+                </div>  
+            </div>
+            <div style="padding: 1%;" class="container-xl d-flex justify-content-center align-items-center bg-secondary border rounded">
+                <div class="row g-3">
+                <span class="badge text-bg-danger" style="margin-top:1%">Alle mit * markierten Punkt müssen eingegeben werden</span>
+                    <div class="col-auto">
+                        <center><button type="submit" style="margin-top: 1%;" class="btn btn-primary">Speichern</button> </center>
+                    </div>
+                </div>  
+            </div>
+            <br>
+        </form>
+            <script>
+                const popover = new bootstrap.Popover('.popover-dismiss', {
+                trigger: 'focus'
+                })
+            </script>
+
+        <!--HTML Footer-->
+        <?php include("html/footer.html") ?>
+    </body>
+<html>
