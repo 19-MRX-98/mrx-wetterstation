@@ -1,0 +1,11 @@
+version: '3.7'
+services:
+  db_connector:
+    container_name: ${container_name}
+    build: .
+    ports:
+      - ${STD_WEBSRV_PORT}:8000
+    volumes: 
+      - ${APACHE_DIR}:/tkf_com ##Only For DEV
+      - ${APP_LOG_DIR}:/tkf_com/comserver/logs
+    restart: always
