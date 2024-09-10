@@ -1,0 +1,21 @@
+#pfeil {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    margin-left: 10px;
+    margin-top:10px; 
+    }
+    #pfeil .shape1, #pfeil .shape2 {
+        border-width: 40px;
+        border-style: solid;
+        height: 0;
+        width: 0;
+        border-color: #000 transparent transparent transparent;
+        top: 10px;
+        position: absolute;
+    }
+    
+    #pfeil .shape2 {
+        top: 0px;
+        border-color: #fff transparent transparent transparent;
+    }

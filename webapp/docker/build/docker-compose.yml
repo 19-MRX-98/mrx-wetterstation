@@ -1,0 +1,12 @@
+  version: '3'
+  services:
+      php-apache-environment:
+        container_name: tkf_websrv_2.5
+        build: .
+        volumes:
+          - /projects/TinkerforgeWetterstation/tkf_web:/var/www/html
+          - /projects/TinkerforgeWetterstation/tkf_web/src/conf/apache2.conf:/etc/apache2/apache2.conf
+        ports:
+          - 80:80
+        restart: always
+        

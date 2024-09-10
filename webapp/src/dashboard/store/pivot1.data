@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<chartdata>
+<col>
+<source>ADatabase</source>
+<ssl/>
+<servername>localhost</servername>
+<username>root</username>
+<password>0IhmBpPwnaCxKQXSsHI6qw==</password>
+<dbname>salesreport</dbname>
+<dbconnected>1</dbconnected>
+
+
+
+
+
+
+
+
+<title>Charttable Chart</title><orientation>v</orientation><filter>false</filter><dropdown>false</dropdown><legposition/><name>0</name><xaxistitle/><yaxistitle/><height>0</height><width>0</width><datalabel>false</datalabel><showgrid>true</showgrid><showline>true</showline>
+<rdbms>mysql</rdbms>
+<file/>
+<json/>
+
+
+<xaxis>SQL1:{col}Region{/col}{data}SELECT * FROM salesrecords LIMIT 10;{/data}</xaxis><yaxis>SQL1:{col}Region{/col}{data}SELECT * FROM salesrecords LIMIT 10;{/data}</yaxis><xmodel/><xsort/><ymodel/><ysort/><sql>SELECT `Region`, SUM(CASE WHEN (`Item Type`='Baby Food') THEN `Units Sold` ELSE 0 END) AS `Baby Food`,SUM(CASE WHEN (`Item Type`='Beverages') THEN `Units Sold` ELSE 0 END) AS `Beverages`,SUM(CASE WHEN (`Item Type`='Cereal') THEN `Units Sold` ELSE 0 END) AS `Cereal`,SUM(CASE WHEN (`Item Type`='Clothes') THEN `Units Sold` ELSE 0 END) AS `Clothes`,SUM(CASE WHEN (`Item Type`='Cosmetics') THEN `Units Sold` ELSE 0 END) AS `Cosmetics`,SUM(CASE WHEN (`Item Type`='Fruits') THEN `Units Sold` ELSE 0 END) AS `Fruits`,SUM(CASE WHEN (`Item Type`='Household') THEN `Units Sold` ELSE 0 END) AS `Household`,SUM(CASE WHEN (`Item Type`='Meat') THEN `Units Sold` ELSE 0 END) AS `Meat`,SUM(CASE WHEN (`Item Type`='Office Supplies') THEN `Units Sold` ELSE 0 END) AS `Office Supplies`,SUM(CASE WHEN (`Item Type`='Personal Care') THEN `Units Sold` ELSE 0 END) AS `Personal Care`,SUM(CASE WHEN (`Item Type`='Snacks') THEN `Units Sold` ELSE 0 END) AS `Snacks`,SUM(CASE WHEN (`Item Type`='Vegetables') THEN `Units Sold` ELSE 0 END) AS `Vegetables` FROM salesrecords GROUP BY `Region`; </sql><size/><maptype/><text/><tracename/><yntitle/><color>#8080ff</color><chart_font_color/><chart_bg_color/><type>charttable</type><refresh>0</refresh><streaming>n</streaming><forecast/><kpichartformula/><kpichartpar/><tablefontsize>12</tablefontsize><side>left</side><plot>dynamic</plot></col>
+<showhidefilter>hide</showhidefilter>
+</chartdata>

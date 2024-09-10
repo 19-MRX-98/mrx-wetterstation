@@ -1,0 +1,61 @@
+<?php
+// Router Klasse einbinden
+include('src/php/php_router/router.php');
+// Add base route (/)
+Route::add('/',function(){
+    include("src/frontpages/start.php");
+});
+Route::add('/actual_year',function(){
+    include("src/frontpages/show_actual_year.php");
+});
+Route::add('/jahr2022',function(){
+    include("src/frontpages/show_year_2022.php");
+});
+Route::add('/jahr2023',function(){
+    include("src/frontpages/show_year_2023.php");
+});
+Route::add('/rain',function(){
+    include("src/frontpages/rain_actual_year.php");
+});
+Route::add('/rain23',function(){
+    include("src/frontpages/rain_2023.php");
+});
+Route::add('/raindeepdive',function(){
+    include("php_modules/rain_deepdive.php");
+});
+Route::add('/actual_daystats',function(){
+    include("src/php/modules/avg_act.php");
+});
+Route::add('/daystats22',function(){
+    include("php_modules/avg_2022.php");
+});
+Route::add('/monatsmittel2022',function(){
+    include("src/frontpages/monatsmittel2022.php");
+});
+Route::add('/monatsmittel2023',function(){
+    include("src/frontpages/monatsmittel2023.php");
+});
+Route::add('/gruenlandtemperatur',function(){
+    include("src/frontpages/gruenlandtemperatur.php");
+});
+Route::add('/seasonreport',function(){
+    include("src/frontpages/season_report.php");
+});
+Route::add('/seasonreport23',function(){
+    include("src/frontpages/season_report_2023.php");
+});
+Route::add('/about',function(){
+    include("src/html/about.php");
+});
+Route::add('/weather_today',function(){
+    include("src/frontpages/weather_today.php");
+});
+Route::add('/tests',function(){
+    include("src/php/modules/stats_of_year.php");
+});
+// Accept only numbers as parameter. Other characters will result in a 404 error
+Route::add('/foo/([0-9]*)/bar',function($var1){
+    echo $var1.' is a great number!';
+});
+Route::run('/');
+?>

@@ -1,0 +1,10 @@
+  version: '3'
+  services:
+      php-apache-environment:
+        container_name: tkf_websrv_1.1-beta
+        image: docker-registry.riedel.lan/tkf_wetterstation_dev/tkf_websrv_1.2.2_php8.2-beta
+        volumes:
+          - /wetterstation/tkf_web/:/var/www/html
+        ports:
+          - 80:80
+        restart: always

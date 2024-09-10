@@ -1,0 +1,60 @@
+	<center><h1><span class="badge bg-dark">Wetterdaten der letzten Tage</span></h1><hr>
+		<div class="d-grid gap-2 d-md-block">
+			<a type='button' class="btn btn-primary" type="button" href="/weather_today">Heute</a>
+			<!--<button class="btn btn-primary" type="button">Gestern</button>
+			<button class="btn btn-primary" type="button">Letzten 7 Tage</button>-->
+		</div></center><hr>
+		<center><h1><span class="badge bg-dark">Aktuelle Wetterdaten</span></h1>
+        <?php include("src/php/modules/actual_weather.php"); ?>
+        <div class='row justify-content-center'>
+			<div class='col-sm-6'>
+				<div class='card text-center'>
+					<div class='card-body'>
+						<h5 class='card-title'>Windrichtung</h5><hr>
+						<p class='card-text'><?php require_once("src/php/modules/wind.php")?></p>
+					</div>
+				</div>
+			</div>
+		</div>
+        <div class='row justify-content-center'>
+			<div class='col-sm-6'>
+				<div class='card text-center'>
+					<div class='card-body'>
+						<h5 class='card-title'>Windchill</h5><hr>
+						<p class='card-text'><img src = 'src/pictures/icons8/icons8-windchill-96.png'></img><?php require_once("src/php/modules/windchill.php")?></p>
+					</div>
+				</div>
+			</div>
+		</div>
+        <div class='row justify-content-center'>
+			<div class='col-sm-6'>
+				<div class='card text-center'>
+					<div class='card-body'>
+						<h5 class='card-title'>Luftdruck</h5><hr>
+						<p class='card-text'><img src = 'src/pictures/icons8/icons8-pressure-40.png'></img><?php require_once("src/php/modules/airpressure.php")?></p>
+						<hr>
+						<p class='card-text'><?php require_once("src/php/modules/functions/func_trends.php")?></p>
+					</div>
+				</div>
+			</div>
+		</div>
+        <div class='row justify-content-center'>
+			<div class='col-sm-6'>
+				<div class='card text-center'>
+					<div class='card-body'>
+						<h5 class='card-title'>Taupunkt</h5><hr>
+						<p class='card-text'><img src = 'src/pictures/icons8/icons8-dew-point-64.png'></img><?php require_once("src/php/modules/dewpoint.php")?></p>
+					</div>
+				</div>
+			</div>
+		</div>
+        <div class='row justify-content-center'>
+			<div class='col-sm-6'>
+				<div class='card text-center'>
+					<div class='card-body'>
+						<h5 class='card-title'>Niederschlag 1h</h5><hr>
+						<p class='card-text'><img src = 'src/pictures/icons8/icons8-raining-60.png'></img><?php require_once("src/php/modules/functions/func_niederschlag.php")?></p>
+					</div>
+				</div>
+			</div>
+		</div>

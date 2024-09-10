@@ -1,0 +1,10 @@
+  services:
+      php-apache-environment:
+        container_name: tkf_websrv_2.6_dev
+        build: .
+        volumes:
+          - /var/wetterstation/webapp:/var/www/html
+          - /var/wetterstation/webapp/src/conf/apache2.conf:/etc/apache2/apache2.conf
+        ports:
+          - 80:80
+        restart: always
