@@ -22,10 +22,10 @@ require_once('src/php/modules/airpressure.php');
 					while($data = $actual_weather->fetch_array())
 						{
 
-							$gerechnete_temperatur=$data[1]/umrechnung_temp;
-							$gerechnete_windgeschwindigkeit=$data[3]/umrechnung_wind1*umrechnung_wind2;
+							$gerechnete_temperatur=$data[1]/$ini['umrechnung_temp'];
+							$gerechnete_windgeschwindigkeit=$data[3]/$ini['umrechnung_wind1'] * $ini['umrechnung_wind2'];
 							$gerechnete_windboen=$data[4];
-							$niederschlag=$data[5]/umrechnung_niederschlag-niederschlagsdifferenz;
+							$niederschlag=$data[5]/$ini['umrechnung_niederschlag'] - $ini['niederschlagsdifferenz'];
 						echo"
 								<div class='col-sm-6'>
 									<div class='card text-center'>

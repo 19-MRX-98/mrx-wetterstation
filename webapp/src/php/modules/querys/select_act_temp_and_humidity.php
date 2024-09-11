@@ -9,7 +9,7 @@
     while($row = $result->fetch_assoc()) {
         $temperatur = $row["Temperatur"];
         $feuchte = $row["Feuchte"];
-        $lufttemperatur = $temperatur/umrechnung_temp; // Grad Celsius
+        $lufttemperatur = $temperatur/$ini['umrechnung_temp']; // Grad Celsius
         $luftfeuchtigkeit = $feuchte; // Prozent
         $taupunkt = taupunkt($lufttemperatur, $luftfeuchtigkeit);
         $gerechnete_temperatur= $temperatur/10;

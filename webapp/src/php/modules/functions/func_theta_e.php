@@ -1,5 +1,5 @@
 <?php
-    require_once("/var/www/html/src/conf/config.inc.php");
+   // require_once("/var/www/html/src/conf/config.inc.php");
     require_once("/var/www/html/src/php/modules/functions/func_dewpoint.php");
     require_once("/var/www/html/src/php/modules/querys/select_act_temp_and_humidity.php");
     require_once("/var/www/html/src/php/modules/querys/select_act_airpressure.php");

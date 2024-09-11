@@ -2,9 +2,7 @@
 <?php
 		require_once("/var/www/html/src/php/globals/global_functions.php");
 		require_once("$global_func");
-		require_once("$log_config_ok");
 		require_once("$zambretti_forecast");
-		require_once("$log_http_client_info");
 ?>
 
 <style>

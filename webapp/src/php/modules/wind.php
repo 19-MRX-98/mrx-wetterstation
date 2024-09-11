@@ -1,5 +1,5 @@
 <?php
-require_once("/var/www/html/src/conf/config.inc.php");
+
 $db = new mysqli($dbsrv,$dbuser,$passwd,$database);
 		if($db->connect_errno)
 				{

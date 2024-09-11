@@ -1,6 +1,5 @@
 <?php
-require_once("/var/www/html/src/conf/config.inc.php");
-	if($airpressure_module == 1){
+	if($ini['airpressure_module'] == 1){
 		$db_c = new mysqli($dbsrv,$dbuser,$passwd,$database);
 		if($db_c->connect_errno)
 				{
@@ -13,7 +12,7 @@ require_once("/var/www/html/src/conf/config.inc.php");
 					$actual_airpressure = $db_c->query($get_airpressure);
 					while($p = $actual_airpressure->fetch_array())
 						{
-                            $airpressure_act = $p[1]/umrechnung_luftdruck;
+                            $airpressure_act = $p[1]/$ini['umrechnung_luftdruck'];
                         }
                     mysqli_close($db_c);
                 }

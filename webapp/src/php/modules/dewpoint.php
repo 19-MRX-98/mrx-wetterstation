@@ -1,6 +1,6 @@
 <?php
 // Verbindung zur Datenbank herstellen
-require_once("/var/www/html/src/conf/config.inc.php");
+
 require_once("functions/func_dewpoint.php");
 $conn = new mysqli($dbsrv,$dbuser,$passwd,$database);
 
@@ -12,7 +12,7 @@ if ($result->num_rows > 0) {
   while($row = $result->fetch_assoc()) {
     $temperatur = $row["Temperatur"];
     $feuchte = $row["Feuchte"];
-    $lufttemperatur = $temperatur/umrechnung_temp; // Grad Celsius
+    $lufttemperatur = $temperatur/$ini['umrechnung_temp']; // Grad Celsius
     $luftfeuchtigkeit = $feuchte; // Prozent
     $taupunkt = taupunkt($lufttemperatur, $luftfeuchtigkeit);
   }
