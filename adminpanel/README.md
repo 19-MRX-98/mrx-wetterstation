@@ -14,11 +14,11 @@
 - Folgende Funktionen können bereits für diese Version genutzt werden:
     - Übersicht der laufenden Dockercontainer
     - Ansicht Logs /Auswahl Logs
-        -Logs von Adminpanel
-        -Logs von Datenbankconnector
+        - Logs von Adminpanel
+        - Logs von Datenbankconnector
     - Konfiguration des Datenbankconnectors via .ini Datei
     - Konfiguration der Wetterstation-Webapp via .ini Datei
-        -Highlights: 
+        - Highlights: 
             - Änderung der Erscheinung zwischen Darkmode und Lightmode
             - Anpassung der Pfade an deine Umgebung, sehr variabel anpassbar
     - Konfiguration des Adminpanels via .ini Datei
