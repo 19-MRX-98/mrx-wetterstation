@@ -1,4 +1,4 @@
-# Version tkf_dbc_connector_v1.13-stable
+# Version tkf_dbc_connector_v1.13.5-dev
 ### Wichtig
 
 - Die Migration kann nur manuell erfolgen!
@@ -10,23 +10,23 @@
         - Docker Container erzeugen (Build)
         - Pfade ggf. Anpassen (.env) Datei
         - Import der Scheduler Datenbank 
+        - Rechte im Ordner /var/wetterstation/dbc/tkf_dbconnector_v1.13-stable/comserver/logs auf 666 ändern,  sonst startet der Container nicht 
         - Logs überprüfen cd /wetterstation/comserver/logs
         - tail -f dbc_log.log
 
 ---
 ### Allgemein Image
 ---
-- PHP 8.3.3 
+- PHP 8.2.2 
 - Alpine Linux 3.19
 - Aktuellste Updates
 
 ---
 ### Neue Features
 ---
-- PHP Script zum Import von Openweather Daten für Wetterbericht
-- Einstellungen werden nun in einer .ini Datei gemacht
-- Implementierung ANALOG
-- Anpassung der Scripts zur Nutzung der .ini Datei
+- Generierung verschiedener Daten für Datenbanktabellen
+    - Jahreswerte: Die Jahreswerte werden 1x tgl. um 0.00 Uhr neu berechnet, in eine Datenbanktablle geschrieben und werden in der Webapp abgerufen. Das senkt die benötigte Rechenleitstung auf der Datenbank.
+    - Monatsmittel und Abweichungen: Die Monatsmittel und die Abweichungen werden 1x tgl. um 23.30 neu berechnet, in eine Datenbanktablle geschrieben und werden in der Webapp abgerufen. Das senkt die benötigte Rechenleitstung auf der Datenbank.
 
 ---
 ### Entfernte Elemente
@@ -40,21 +40,21 @@
         - Überprüft die Datenbankverbindung zur Wetterstation
         - Schreibt in Logfile
 
-    - log_rotate
-        - Überprüft die größe der Logdatei, ob diese größer als 5MB ist
-        - Wenn größer als 5MB, erstellt das Script eine neue Logdatei
+    - update_jahreswerte
+        - Aktualisiert die Jahreswerte und schreibt diese zurück in eine Datenbanktabelle
 
-- Anpassung aller Scripts zur Nutzung der .ini Datei
+    - update_monatsmittel_ljm
+        - Aktualisiert die Monatsmittel, vergleicht die aktuellen Werte mit dem langjährigen Mittel und schreibt diese zurück in einen Datenbanktabelle
 
 ---
 ### Datenbank
 ---
-- Abhängigkeiten zur Admin DB wurden entfernt
+- 
 
 ---
 ###Features in Erstellung
 ---
-- Reports
+- 
 
 ---
-###Stand 17.08.2024
+###Stand 14.09.2024
