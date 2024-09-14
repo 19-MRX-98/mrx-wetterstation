@@ -37,19 +37,6 @@ function logs($message, $logfile, $error_level = 'INFO')
 logs($message, $logfile);
 /*$logfile = "/tkf_com/logs/dbc_log.log"; */
 
-/* Funktion zum Verbinden zur Admin Datenbank */
-function connect_to_admindb($dbsrv, $dbuser, $passwd, $tkf_adm)
-{
-    $admindb = new mysqli($dbsrv, $dbuser, $passwd, $tkf_adm);
-    if ($admindb->connect_errno) {
-        echo $dbsrv;
-        exit;
-    } else {
-        return $admindb;
-    }
-}
-connect_to_admindb($dbsrv, $dbuser, $passwd, $tkf_adm);
-
 /* Funktion zum Verbinden zur Wetter Datenbank */
 function connect_to_weatherdb($dbsrv, $dbuser, $passwd, $database)
 {
