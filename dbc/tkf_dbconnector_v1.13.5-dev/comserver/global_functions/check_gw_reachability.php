@@ -1,6 +1,6 @@
 <?php
     require_once("global_functions.php");
-    //require_once("/tkf_com/conf/config.inc.php");
+
     $gw_address= $ini['gw_address'];
     $gw_http_port= $ini['gw_port'];
     $gw_conn_timeout = $ini['gw_healthcheck_timeout'];

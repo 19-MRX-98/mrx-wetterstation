@@ -4,7 +4,7 @@ require_once("/tkf_com/global_functions/global_functions.php");
 
 require_once('Tinkerforge/IPConnection.php');
 require_once('Tinkerforge/BrickletUVLightV2.php');
-//require_once("/tkf_com/conf/config.inc.php");
+
 use Tinkerforge\IPConnection;
 use Tinkerforge\BrickletUVLightV2;
 

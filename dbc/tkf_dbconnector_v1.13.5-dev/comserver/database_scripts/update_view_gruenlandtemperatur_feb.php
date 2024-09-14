@@ -1,6 +1,6 @@
 <?php
 require_once("/tkf_com/global_functions/global_functions.php");
-//require_once("/comserver/conf/config.inc.php");
+
 $db = new mysqli($dbsrv,$dbuser,$passwd,$database);
 		if($db->connect_errno)
 				{

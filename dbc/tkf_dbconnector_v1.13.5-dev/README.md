@@ -31,7 +31,7 @@
 ---
 ### Entfernte Elemente
 ---
-
+- require_once("/tkf_com/conf/config.inc.php");
 ---
 ### PHP
 ---

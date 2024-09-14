@@ -23,8 +23,7 @@
 							$rain, $wind_direction, $battery_low, $scriptname)
 	{
 		require_once("/tkf_com/global_functions/global_functions.php");
-		
-		//require_once("/tkf_com/conf/config.inc.php");
+	
 		//Variablen 
 		date_default_timezone_set("Europe/Berlin");
 		$date = date("Y-m-d H:i:s");

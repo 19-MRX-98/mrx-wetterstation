@@ -1,6 +1,6 @@
 <?php
     require_once("/tkf_com/global_functions/global_functions.php");
-    //require_once("/tkf_com/conf/config.inc.php");
+    
 
     $scriptname=$_SERVER['SCRIPT_NAME'];
 

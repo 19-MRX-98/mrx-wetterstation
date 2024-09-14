@@ -1,6 +1,6 @@
 <?php
     require_once("global_functions.php");
-    //require_once("/tkf_com/conf/config.inc.php");
+  
 
     function check_systems($dbsrv,$dbport,$connection_timeout){
         $fp = fsockopen($dbsrv,$dbport, $errno, $errstr,$connection_timeout);

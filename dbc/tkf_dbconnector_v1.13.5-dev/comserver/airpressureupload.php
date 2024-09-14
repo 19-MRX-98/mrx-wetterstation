@@ -23,7 +23,7 @@
 		//Variablen 
 		date_default_timezone_set("Europe/Berlin");
 		$date = date("Y-m-d H:i:s");
-		//require_once("/tkf_com/conf/config.inc.php");
+
 		$data_reg = new mysqli($dbsrv,$dbuser,$passwd,$database);
 		if($data_reg->connect_errno)
 					{
