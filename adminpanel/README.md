@@ -24,5 +24,18 @@
     - Konfiguration des Adminpanels via .ini Datei
     - Konfiguration des Dockercontainers des Adminpanels
     - Authentifizierungstoken für Cloudanbindung
+    - 
 
-
+---
+### Features in Erstellung
+---
+- Datenbankeinstellungen
+    - Übersichtsseite mit allg. aktuellen Datenbankstatistiken
+- Datenbankupdate ausführen
+    - Hochladen von SQL Scripts 
+    - Ausführung des Datenbankupdates
+    - Spiegelung der Datenbank und herunterladen der Datenbank
+- Updates von Server laden
+    - Entpacken in vorgesehene Verzeichnisse 
+    - Anzeige, das Update für Modul verfügbar ist
+    - Readme.md interpretieren
