@@ -3,11 +3,12 @@
 
     $actual_year = date("Y");
     $db = new mysqli($dbsrv,$dbuser,$passwd,$database);
-
-
+  
     // Funktion, um Daten in die Datenbank einzufügen
-    function insertIntoDatabase($db, $parameter, $wert, $datum,$ini) {
-        $stmt = $db->prepare("INSERT INTO $ini[stats_act_year_tbl] (parameter, wert, datum) VALUES (?, ?, ?)");
+    function insertIntoDatabase($db, $parameter, $wert, $datum) {
+        $wert = substr($wert, 0, 50);
+        
+        $stmt = $db->prepare("INSERT INTO stats_act_year (parameter, wert, datum) VALUES (?, ?, ?)");
         $stmt->bind_param("sss", $parameter, $wert, $datum);
         $stmt->execute();
         $stmt->close();
@@ -18,9 +19,9 @@
     $actual_tops = $db->query($get_topwerte);
     while($data = $actual_tops->fetch_array()) {
         $parameter = 'Höchste Temperatur';
-        $wert = $data[0] / umrechnung_temp . "°C";
+        $wert = $data[0] / umrechnung_temp;
         $datum = $data[1];
-        insertIntoDatabase($db, $parameter, $wert, $datum,$ini);
+        insertIntoDatabase($db, $parameter, $wert, $datum);
     }
 
     // Tiefste Temperatur
@@ -28,9 +29,9 @@
     $actual_tops4 = $db->query($get_topwerte04);
     while($data4 = $actual_tops4->fetch_array()) {
         $parameter = 'Tiefste Temperatur';
-        $wert = $data4[0] / umrechnung_temp . "°C";
+        $wert = $data4[0] / umrechnung_temp;
         $datum = $data4[1];
-        insertIntoDatabase($db, $parameter, $wert, $datum,$ini);
+        insertIntoDatabase($db, $parameter, $wert, $datum);
     }
 
     // Stärkste Böe
@@ -38,9 +39,9 @@
     $actual_tops2 = $db->query($get_topwerte02);
     while($data2 = $actual_tops2->fetch_array()) {
         $parameter = 'Stärkste Böe';
-        $wert = $data2[0] . " km/h";
+        $wert = $data2[0];
         $datum = $data2[1];
-        insertIntoDatabase($db, $parameter, $wert, $datum,$ini);
+        insertIntoDatabase($db, $parameter, $wert, $datum);
     }
 
     // Jahresniederschlag
@@ -48,9 +49,9 @@
     $actual_tops4 = $db->query($get_topwerte4);
     while($data_4 = $actual_tops4->fetch_array()) {
         $parameter = 'Jahresniederschlag';
-        $wert = $data_4[0] / umrechnung_niederschlag . " L/m²";
+        $wert = $data_4[0] / umrechnung_niederschlag;
         $datum = date("Y-m-d");
-        insertIntoDatabase($db, $parameter, $wert, $datum,$ini);
+        insertIntoDatabase($db, $parameter, $wert, $datum);
     }
 
     // Jahresmitteltemperatur
@@ -58,9 +59,9 @@
     $avg_year = $db->query($get_avg_jahresmittel);
     while($data_AVGYEAR = $avg_year->fetch_array()) {
         $parameter = 'Jahresmitteltemperatur';
-        $wert = round($data_AVGYEAR[0] / umrechnung_temp, 2) . "°C";
+        $wert = round($data_AVGYEAR[0] / umrechnung_temp, 2);
         $datum = date("Y-m-d");
-        insertIntoDatabase($db, $parameter, $wert, $datum,$ini);
+        insertIntoDatabase($db, $parameter, $wert, $datum);
     }
 
     // Warme Tage (Tmax >25°C u <30°C)
@@ -68,9 +69,9 @@
     $warmetage = $db->query($get_warme_tage);
     while($data5 = $warmetage->fetch_array()) {
         $parameter = 'Anzahl der warmen Tage (Tmax >25°C u <30°C)';
-        $wert = $data5[0] . " Tage";
+        $wert = $data5[0];
         $datum = date("Y-m-d");
-        insertIntoDatabase($db, $parameter, $wert, $datum,$ini);
+        insertIntoDatabase($db, $parameter, $wert, $datum);
     }
 
     // Heiße Tage (Tmax >30°C u <35°C)
@@ -78,9 +79,9 @@
     $heißetage = $db->query($get_heiße_tage);
     while($data6 = $heißetage->fetch_array()) {
         $parameter = 'Anzahl der heißen Tage (Tmax >30°C u <35°C)';
-        $wert = $data6[0] . " Tage";
+        $wert = $data6[0];
         $datum = date("Y-m-d");
-        insertIntoDatabase($db, $parameter, $wert, $datum,$ini);
+        insertIntoDatabase($db, $parameter, $wert, $datum);
     }
 
     // Wüstentage (Tmax >35°C)
@@ -88,9 +89,9 @@
     $wuestentage = $db->query($get_wuesten_tage);
     while($data7 = $wuestentage->fetch_array()) {
         $parameter = 'Anzahl der Wüstentage (Tmax >35°C)';
-        $wert = $data7[0] . " Tage";
+        $wert = $data7[0];
         $datum = date("Y-m-d");
-        insertIntoDatabase($db, $parameter, $wert, $datum,$ini);
+        insertIntoDatabase($db, $parameter, $wert, $datum);
     }
 
     // Mittlere Feuchte
@@ -98,9 +99,9 @@
     $avg_feuchte = $db->query($get_avg_feuchte);
     while($data_AVG_FEUCHTE = $avg_feuchte->fetch_array()) {
         $parameter = 'Mittlere Feuchte';
-        $wert = round($data_AVG_FEUCHTE[0], 2) . " %";
+        $wert = round($data_AVG_FEUCHTE[0], 2);
         $datum = date("Y-m-d");
-        insertIntoDatabase($db, $parameter, $wert, $datum,$ini);
+        insertIntoDatabase($db, $parameter, $wert, $datum);
     }
 
     // Höchster Luftdruck
@@ -108,9 +109,9 @@
     $max_pressure = $db->query($get_max_pressure);
     while($data_max_pressure = $max_pressure->fetch_array()) {
         $parameter = 'Höchster Luftdruck';
-        $wert = round($data_max_pressure[1] / umrechnung_luftdruck, 0) . " hPA";
+        $wert = round($data_max_pressure[1] / umrechnung_luftdruck, 0);
         $datum = $data_max_pressure[0];
-        insertIntoDatabase($db, $parameter, $wert, $datum,$ini);
+        insertIntoDatabase($db, $parameter, $wert, $datum);
     }
 
     // Tiefster Luftdruck
@@ -118,9 +119,9 @@
     $min_pressure = $db->query($get_min_pressure);
     while($data_min_pressure = $min_pressure->fetch_array()) {
         $parameter = 'Tiefster Luftdruck';
-        $wert = round($data_min_pressure[1] / umrechnung_luftdruck, 0) . " hPA";
+        $wert = round($data_min_pressure[1] / umrechnung_luftdruck, 0);
         $datum = $data_min_pressure[0];
-        insertIntoDatabase($db, $parameter, $wert, $datum,$ini);
+        insertIntoDatabase($db, $parameter, $wert, $datum);
     }
 
     // Mittlerer Luftdruck
@@ -128,9 +129,9 @@
     $avg_pressure = $db->query($get_avg_pressure);
     while($data_avg_pressure = $avg_pressure->fetch_array()) {
         $parameter = 'Mittlerer Luftdruck';
-        $wert = round($data_avg_pressure[1] / umrechnung_luftdruck, 0) . " hPA";
+        $wert = round($data_avg_pressure[1] / umrechnung_luftdruck, 0);
         $datum = date("Y-m-d");
-        insertIntoDatabase($db, $parameter, $wert, $datum,$ini);
+        insertIntoDatabase($db, $parameter, $wert, $datum);
     }
 
     mysqli_close($db);
