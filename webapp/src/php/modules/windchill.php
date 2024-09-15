@@ -1,7 +1,6 @@
 <?php
-require_once("src/conf/config.inc.php");
 
-function windchill($dbsrv,$dbuser,$passwd,$database)
+function windchill($ini,$dbsrv,$dbuser,$passwd,$database)
 {   
     $db = new mysqli($dbsrv,$dbuser,$passwd,$database);
     if($db->connect_errno)
@@ -15,8 +14,8 @@ function windchill($dbsrv,$dbuser,$passwd,$database)
         $actual_weather = $db->query($get_weatherdata);
         while($data = $actual_weather->fetch_array())
             {
-                $gerechnete_temperatur=$data[1]/umrechnung_temp;
-                $gerechnete_windgeschwindigkeit=$data[3]/umrechnung_wind1*umrechnung_wind2;
+                $gerechnete_temperatur=$data[1]/ $ini['umrechnung_temp'];
+                $gerechnete_windgeschwindigkeit=$data[3]/$ini['umrechnung_wind1']*$ini['umrechnung_wind2'];
                 $temperatur=$gerechnete_temperatur;
                 $windgesch=$gerechnete_windgeschwindigkeit;
             }
@@ -34,5 +33,5 @@ function windchill($dbsrv,$dbuser,$passwd,$database)
     }
     mysqli_close($db);
 }
-windchill($dbsrv,$dbuser,$passwd,$database);
+windchill($ini,$dbsrv,$dbuser,$passwd,$database);
 ?>

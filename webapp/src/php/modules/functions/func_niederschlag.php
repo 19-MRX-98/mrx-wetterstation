@@ -1,6 +1,5 @@
 <?php
-require_once("src/conf/config.inc.php");
-function rainfall_actual($dbsrv,$dbuser,$passwd,$database)
+function rainfall_actual($ini,$dbsrv,$dbuser,$passwd,$database)
 {
     $zeitstempel = time();
     $Zeit_back05 = $zeitstempel - (20 * 60);
@@ -41,5 +40,5 @@ function rainfall_actual($dbsrv,$dbuser,$passwd,$database)
                 }  
                 mysqli_close($db);
 }
-rainfall_actual($dbsrv,$dbuser,$passwd,$database);
+rainfall_actual($ini,$dbsrv,$dbuser,$passwd,$database);
 ?>

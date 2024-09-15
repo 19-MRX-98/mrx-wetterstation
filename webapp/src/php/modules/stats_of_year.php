@@ -1,5 +1,4 @@
 <?php
-require_once("/var/www/html/src/conf/config.inc.php");
             $actual_year = date("Y");
             $db = new mysqli($dbsrv,$dbuser,$passwd,$database);
             if($db->connect_errno)
@@ -30,7 +29,7 @@ require_once("/var/www/html/src/conf/config.inc.php");
                                              Höchste Temperatur
                                             </td>
                                             <td>
-                                                ".$data[0]/umrechnung_temp."°C
+                                                ".$data[0]/$ini['umrechnung_temp']."°C
                                             </td>
                                             <td>
                                                 $data[1]
@@ -50,7 +49,7 @@ require_once("/var/www/html/src/conf/config.inc.php");
                                                 Tiefste Temperatur
                                             </td>
                                             <td>
-                                            ".$data4[0]/umrechnung_temp." °C
+                                            ".$data4[0]/$ini['umrechnung_temp']." °C
                                             </td>
                                             <td>
                                              $data4[1]
@@ -88,7 +87,7 @@ require_once("/var/www/html/src/conf/config.inc.php");
                                             Jahresniederschlag
                                         </td>
                                         <td>
-                                            ".$data_4[0]/umrechnung_niederschlag." L/m²
+                                            ".$data_4[0]/$ini['umrechnung_niederschlag']." L/m²
                                         </td>
                                         <td>
                                             ".$today = date("j.m.Y")." *
@@ -105,7 +104,7 @@ require_once("/var/www/html/src/conf/config.inc.php");
                                         Jahresmitteltemperatur
                                     </td>
                                     <td>
-                                        ".round($data_AVGYEAR[0]/umrechnung_temp,2)."°C
+                                        ".round($data_AVGYEAR[0]/$ini['umrechnung_temp'],2)."°C
                                     </td>
                                     <td>
                                     ".$today = date("j.m.Y")." *
@@ -190,7 +189,7 @@ require_once("/var/www/html/src/conf/config.inc.php");
                                     Höchster Luftdruck
                                 </td>
                                 <td>
-                                    ".round($data_max_pressure[1]/umrechnung_luftdruck,0)." hPA
+                                    ".round($data_max_pressure[1]/$ini['umrechnung_luftdruck'],0)." hPA
                                 </td>
                                 <td>
                                     ".$data_max_pressure[0]."
@@ -207,7 +206,7 @@ require_once("/var/www/html/src/conf/config.inc.php");
                                     Tiefster Luftdruck
                                 </td>
                                 <td>
-                                    ".round($data_min_pressure[1]/umrechnung_luftdruck,0)." hPA
+                                    ".round($data_min_pressure[1]/$ini['umrechnung_luftdruck'],0)." hPA
                                 </td>
                                 <td>
                                     ".$data_min_pressure[0]."
@@ -224,7 +223,7 @@ require_once("/var/www/html/src/conf/config.inc.php");
                                     Mittlerer Luftdruck
                                 </td>
                                 <td>
-                                    ".round($data_avg_pressure[1]/umrechnung_luftdruck,0)." hPA
+                                    ".round($data_avg_pressure[1]/$ini['umrechnung_luftdruck'],0)." hPA
                                 </td>
                                 <td>
                                     ".$today = date("j.m.Y")." *
