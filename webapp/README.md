@@ -1,4 +1,4 @@
-# Update Q3-2024
+# Update Q4-2024 + Q1-2025
 ---
 ### Allgemein Image
 ---
@@ -26,12 +26,16 @@
             - Nullgradgrenze ab grund
             - Berechnung der Parameter mit dem trockendiabetischen Temperaturgradienten(bis Kondensationsniveau) und dem feuchtdiabetischen Temperaturgradienten (ab Kondensationsniveau)
     - Tageswerte
+    - Modernisierung der Ausgabe der Jahreswerte, Monatsmittel etc.
+    - Teilweise Implementierung zur Nutzung einer .ini Datei, dieses Feature wird in den nächsten Updates weiter ausgebaut
+    
 
 ---
 ### Entfernte Elemente
 ---
 - Link heutiger Tag
 - Eigene Seite Tageswerte
+- Einige Scripts
 
 ---
 ### PHP
@@ -60,7 +64,8 @@
 ---
 ### Datenbank
 ---
-- Keine Anpassungen 
+- Datenbanktabelle für Statistiken des aktuellen Jahres und vorherige Jahre
+- Datenbanktabelle für Monatsmittel aktuelles Jahr und vorherige Jahre
 
 ---
 ###Features in Erstellung

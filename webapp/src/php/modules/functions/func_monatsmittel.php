@@ -1,91 +1,86 @@
 <?php
-
-    function avg_month($dbsrv,$dbuser,$passwd,$database,$avg){
-        $db = new mysqli($dbsrv,$dbuser,$passwd,$database);
-        if($db->connect_errno)
-            {
-                echo "Keine Verbindung m&ooml;glich! Bitte kontaktieren Sie den Administrator!\n";
-                echo "Fehler".$db->connect_errno.":".$db->connect_errno; exit;
-            }
-            else
-            {   
-                $stmt = $db->prepare("SELECT monat, monatsmitteltemperatur FROM view_update_monatsmittel;");
-                $stmt->execute();
-                $result = $stmt->get_result();
-
-
-                if (mysqli_num_rows($result) > 0) {
-                    while ($row = mysqli_fetch_array($result)) {
-                        $monat = $row["monat"];
-                        $r = $row["monatsmitteltemperatur"];
-
-                        // Fetch langjähriges Mittel für den aktuellen Monat
-                        $abfrage2 = $db->prepare("SELECT $monat FROM jahresmittel_1991_2020 WHERE selected = '1'");
-                        $abfrage2->execute();
-                        $result2 = $abfrage2->get_result();
-
-                        if (mysqli_num_rows($result2) > 0) {
-                            while ($row1 = mysqli_fetch_array($result2)) {
-                                $r1 = $row1[$monat];
+function avg_month($dbsrv, $dbuser, $passwd, $database) {
+    // Verbindung zur Datenbank herstellen
+    $db = new mysqli($dbsrv, $dbuser, $passwd, $database);
+    if ($db->connect_errno) {
+        echo "Keine Verbindung möglich! Bitte kontaktieren Sie den Administrator!\n";
+        echo "Fehler " . $db->connect_errno . ": " . $db->connect_error;
+        exit;
+    } else {
+        // SQL-Abfrage, die die Monate in der richtigen Reihenfolge ausgibt
+        $getabw = "
+            SELECT * 
+            FROM abweichungen_act_year
+            ORDER BY FIELD(Monat, 
+                'January', 'February', 'March', 'April', 'May', 'June', 
+                'July', 'August', 'September', 'October', 'November', 'December');
+        ";
+        
+        $actual_abw = $db->query($getabw);
+        if ($actual_abw->num_rows > 0) {
+            echo "
+            <div class ='table-responsive'>
+                <table class='table'>
+                    <thead class='table-primary'>
+                        <th>Monat</th>
+                        <th><center>Mitteltemperatur in °C</center></th>
+                        <th><center>Abweichung LjM in °C</center></th>
+                        <th><center>Hinweis</center></th>
+                    </thead>
+            ";
+            
+            // Array zur Übersetzung der Monatsnamen
+            $month_translation = array(
+                'January' => 'Januar',
+                'February' => 'Februar',
+                'March' => 'März',
+                'April' => 'April',
+                'May' => 'Mai',
+                'June' => 'Juni',
+                'July' => 'Juli',
+                'August' => 'August',
+                'September' => 'September',
+                'October' => 'Oktober',
+                'November' => 'November',
+                'December' => 'Dezember'
+            );
+            
+            while ($data = $actual_abw->fetch_array()) {
+                // Monat in Deutsch übersetzen
+                $month_in_german = $month_translation[$data[0]] ?? $data[0];
+                
+                echo "
+                    <tr>
+                        <td>$month_in_german</td>
+                        <td><center>".round($data[1],2)." °C</center></td>
+                        <td>
+                            <center>";
+                            $differenz = round($data[2],2);
+                            if($differenz >= '0' && $differenz <= '0.5'){
+                                echo "<center><button type='button' class='btn btn-primary'>". round($differenz,2)."</button></center>";
                             }
-
-                            // Berechne die Abweichung und gib das Ergebnis aus
-                            $differenz = $r - $r1;
-                            //echo "Abweichung für $monat: " . ($differenz / 10) . "°C<br>";
-                            echo "
-                            <div class ='table-responsive'>
-                                <table class='table'>
-                                    <thead class='table-primary'>
-                                        <th witdh='120px'>Monat</th>
-                                        <th witdh><center>Mitteltemperatur in °C</center></th>
-                                        <th witdh><center>Mitteltemperatur LjM °C</center></th>
-                                        <th witdh><center>Abweichung LjM in °C</center></th>
-                                    </thead>
-                                    <tr>
-                                        <td witdh='120px'>
-                                            $monat
-                                        </td>
-                                        <td>
-                                            <center><button type='button' class='btn btn-success'>".round($r,2)."</button>
-                                        </td>
-                                        <td>
-                                            <center><button type='button' class='btn btn-secondary'>$r1</button>
-                                        </td>
-                                        <td>";
-                                            if($differenz >= '0' && $differenz <= '0.5'){
-                                                echo "<center><button type='button' class='btn btn-primary'>". round($differenz,2)."</button></center>";
-                                            }
-                                            elseif($differenz > '0.5' && $differenz <= '1.0'){
-                                                echo "<center><button type='button' class='btn btn-info'>". round($differenz,2)."</button></center>";
-                                            }
-                                            elseif($differenz > '1.0' && $differenz <= '2.0'){
-                                                echo "<center><button type='button' class='btn btn-warning'>". round($differenz,2)."</button></center>";
-                                            }
-                                            elseif($differenz > '2.0'){
-                                                echo "<center><button type='button' class='btn btn-danger'>". round($differenz,2)."</button></center>";
-                                            }
-                                        echo"
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        ";
-                            // Optional: Überprüfen, ob die Abweichung größer als ein bestimmter Schwellenwert ist
-                            $schwellenwert = 5; // Beispielwert
-                            if ($differenz > $schwellenwert) {
-                                echo "Achtung: Die Abweichung ist größer als $schwellenwert °C<br>";
+                            elseif($differenz > '0.5' && $differenz <= '1.0'){
+                                echo "<center><button type='button' class='btn btn-info'>". round($differenz,2)."</button></center>";
                             }
-                        } else {
-                            echo "Langjähriges Mittel nicht gefunden für $monat.<br>";
-                        }
-                    }
-                } else {
-   
-                    echo "Keine Daten gefunden.";
-                }
+                            elseif($differenz > '1.0' && $differenz <= '2.0'){
+                                echo "<center><button type='button' class='btn btn-warning'>". round($differenz,2)."</button></center>";
+                            }
+                            elseif($differenz > '2.0'){
+                                echo "<center><button type='button' class='btn btn-danger'>". round($differenz,2)."</button></center>";
+                            }
+                        echo "</center></td>
+                    </tr>
+                ";
             }
-    mysqli_close($db);
+            echo "</table></div>";
+        } else {
+            echo "Keine Daten verfügbar.";
+        }
     }
-avg_month($dbsrv,$dbuser,$passwd,$database,$avg,$level, $message, $script_name, $sql_query);
-    
+    // Verbindung schließen
+    mysqli_close($db);
+}
+
+// Funktion aufrufen
+avg_month($dbsrv, $dbuser, $passwd, $database);
 ?>
