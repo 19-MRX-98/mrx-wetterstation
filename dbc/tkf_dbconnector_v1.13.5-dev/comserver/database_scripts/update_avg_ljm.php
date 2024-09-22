@@ -1,7 +1,7 @@
 <?php
     require_once("/tkf_com/global_functions/global_functions.php");
 
-    $db= new mysqli($dbsrv,$dbuser,$passwd,$database);
+    $db = connect_to_weatherdb($dbsrv, $dbuser, $passwd, $database);
 
     $stmt = $db->prepare("SELECT monat, monatsmitteltemperatur FROM view_update_monatsmittel;");
     $stmt->execute();

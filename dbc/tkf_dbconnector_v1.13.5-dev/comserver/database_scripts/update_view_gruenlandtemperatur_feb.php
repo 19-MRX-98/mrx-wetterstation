@@ -1,7 +1,7 @@
 <?php
 require_once("/tkf_com/global_functions/global_functions.php");
 
-$db = new mysqli($dbsrv,$dbuser,$passwd,$database);
+$db = connect_to_weatherdb($dbsrv, $dbuser, $passwd, $database);
 		if($db->connect_errno)
 				{
 					echo "Keine Verbindung m&ooml;glich! Bitte kontaktieren Sie den Administrator!\n";
