@@ -31,15 +31,19 @@
     
                 if ($insert_stmt->execute()) {
                     echo "Daten für Monat $monat erfolgreich eingefügt.\n";
+                    logs("Daten für Monat $monat erfolgreich eingefügt.",'INFO');
                 } else {
                     echo "Fehler beim Einfügen der Daten für Monat $monat: " . $db->error . "\n";
+                    logs("Fehler beim Einfügen der Daten für Monat $monat.",'ERROR');
                 }
             } else {
                 echo "Kein langjähriges Mittel für Monat $monat gefunden.\n";
+                logs("Fataler Fehler: Datenbanktabelle exisitiert? Datenbanktabelle: jahresmittel_1991_2020 .",'ERROR');
             }
         }
     } else {
         echo "Keine Monatsdaten verfügbar.\n";
+        logs("Fataler Fehler: Besteht eine Datenbankverbindung? Datenbank: $dbsrv",'ERROR');
     }
 
 
