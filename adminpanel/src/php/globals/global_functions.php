@@ -32,8 +32,6 @@
 	}
 	connect_to_db($dbsrv, $dbuser, $passwd, $database);
 
-
-	
 	function logs($message,$error_level = 'INFO'){
 		$logfile = "/var/www/html/logs/app.log";
 		$date_time = date("Y-m-d H:i:s");
