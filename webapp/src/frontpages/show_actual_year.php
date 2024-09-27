@@ -24,7 +24,7 @@
         </div>
         
         <div class="container-fluid bg-secondary text-white"><!--Container Monatsmittel-->
-            <center><h1>Monatsmittel <?php echo date("Y"); ?><span class="badge text-bg-info">New Feature</span></h1></center>
+            <center><h1>Monatsmittel <?php echo date("Y"); ?></center>
                 <div class="row">
                     <div class="col-md-6">
                     <div class="container">
@@ -47,7 +47,7 @@
         </div>
 
         <div class="container-fluid bg-secondary text-white"><!--Container Monatsmittel-->
-                <center><h1>Jahreszeitenbericht <?php echo date("Y"); ?><span class="badge text-bg-info">New Feature</span></h1></center>
+                <center><h1>Jahreszeitenbericht <?php echo date("Y"); ?></center>
                 <div class="table-responsive">
                     <table class="table table-striped table-hover table-bordered caption-top">
                             <thead class = "table-info">

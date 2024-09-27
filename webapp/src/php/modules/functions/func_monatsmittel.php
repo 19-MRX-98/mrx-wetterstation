@@ -1,7 +1,8 @@
 <?php
+require_once("src/php/globals/global_functions.php");
 function avg_month($dbsrv, $dbuser, $passwd, $database) {
     // Verbindung zur Datenbank herstellen
-    $db = new mysqli($dbsrv, $dbuser, $passwd, $database);
+    $db = connect_to_db($dbsrv, $dbuser, $passwd, $database);
     if ($db->connect_errno) {
         echo "Keine Verbindung möglich! Bitte kontaktieren Sie den Administrator!\n";
         echo "Fehler " . $db->connect_errno . ": " . $db->connect_error;
@@ -19,14 +20,14 @@ function avg_month($dbsrv, $dbuser, $passwd, $database) {
         $actual_abw = $db->query($getabw);
         if ($actual_abw->num_rows > 0) {
             echo "
-            <div class ='table-responsive'>
-                <table class='table'>
-                    <thead class='table-primary'>
-                        <th>Monat</th>
-                        <th><center>Mitteltemperatur in °C</center></th>
-                        <th><center>Abweichung LjM in °C</center></th>
-                        <th><center>Hinweis</center></th>
-                    </thead>
+                <div class='table-responsive'>
+                    <table class = 'table table-hover'>
+                        <thead class='table-primary'>
+                            <th scope='col'>Mitteltemperatur in °C</th>
+                            <th scope='col'>Abweichung LjM in °C</th>
+                            <th scope='col'>Hinweis</th>
+                        </thead>
+                        <tbody class='table-group-divider'>
             ";
             
             // Array zur Übersetzung der Monatsnamen
