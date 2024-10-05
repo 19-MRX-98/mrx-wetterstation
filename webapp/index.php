@@ -14,6 +14,9 @@ Route::add('/jahr2022',function(){
 Route::add('/jahr2023',function(){
     include("src/frontpages/show_year_2023.php");
 });
+Route::add('/jahr2024',function(){
+    include("src/frontpages/show_year_2024.php");
+});
 Route::add('/rain',function(){
     include("src/frontpages/rain_actual_year.php");
 });
