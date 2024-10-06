@@ -6,10 +6,9 @@
     <a class="nav-link active" aria-current="page" href="/ba41f6a85c1ee640d7b7ee303aa6312320b9a55a">Start</a>
   </li>
   <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle active"data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Datenbanken</a>
+    <a class="nav-link dropdown-toggle active"data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Datenbank</a>
     <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Dashboard</a></li>
-      <li><a class="dropdown-item" href="#">Admin-DB</a></li>
+      <li><a class="dropdown-item" href="/database-dashboard">Dashboard</a></li>
       <li><a class="dropdown-item" href="#">Wetterdaten-DB</a></li>
       <li><a class="dropdown-item" href="#">Datenbankupdate</a></li>
       <li><a class="dropdown-item" href="#">Rechte</a></li>

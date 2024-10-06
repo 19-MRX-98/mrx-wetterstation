@@ -33,6 +33,9 @@ Route::add('/connector_config',function(){
 Route::add('/webapp_config',function(){
     include("frontpages/tkf_webapp_ini.php");
 });
+Route::add('/database-dashboard',function(){
+    include("frontpages/database-dashboard.php");
+});
 Route::add('/crontab',function(){
     $ini = parse_ini_file("/tkf_ini/comserver.ini");
     include($ini['crontabui']);

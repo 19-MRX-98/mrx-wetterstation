@@ -6,6 +6,7 @@
 - PHP 8.3.3 
 - Ubuntu 22.04.02
 - Aktuellste Updates
+- chartjs 4.4.4
 
 ---
 ### Funktionen:
