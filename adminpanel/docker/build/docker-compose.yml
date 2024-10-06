@@ -9,6 +9,7 @@
           - ${TKF_COM_LOG_DIR}:/tkf_external_logs
           - ${TKF_COM_INI}:/tkf_ini/comserver.ini
           - ${TKF_CP_DOCKER_DEV}:/tkf_cp_docker
+          - ${TKF_PLOTTER_LOG_DIR}:/tkf_plotter_logs
           - ${WEBAPP_INI}:/tkf_ini/webapp.ini
           - /var/run/docker.sock:/var/run/docker.sock
         ports:

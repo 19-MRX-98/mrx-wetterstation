@@ -4,6 +4,7 @@ RUN apt-get update && apt-get upgrade -y
 RUN mkdir /tkf_external_logs; chmod 777 /tkf_external_logs
 RUN mkdir /tkf_ini; chmod 777 /tkf_ini
 RUN mkdir /tkf_cp_docker; chmod 777 /tkf_cp_docker
+RUN mkdir /tkf_plotter_logs; chmod 777 /tkf_plotter_logs
 RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
 RUN docker-php-ext-install pdo_mysql
 RUN apt-get install zlib1g-dev -y
