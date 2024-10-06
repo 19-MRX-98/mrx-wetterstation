@@ -1,0 +1,4 @@
+mysql-connector-python==8.0.33
+matplotlib==3.7.2
+mplcursors==0.5.2
+configparser==5.0.2

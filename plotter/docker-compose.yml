@@ -1,0 +1,8 @@
+services:
+  tkf-pyplotter-dev-v0.1:
+    container_name: ${container_name}
+    build: .
+    volumes: 
+      - ${BASE_DIR}:/tkf_plotter
+      - ${INI_DIR}:/conf
+    restart: always

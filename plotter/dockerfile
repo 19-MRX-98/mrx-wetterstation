@@ -1,0 +1,28 @@
+# Verwende das offizielle Python-Image aus dem Docker Hub
+FROM python:latest
+
+# Setze das Arbeitsverzeichnis im Container auf /tkf_plotter
+WORKDIR /tkf_plotter
+
+# Installiere alle Abhängigkeiten (falls requirements.txt existiert)
+RUN pip install --upgrade pip
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
+# Installiere Cron
+RUN apt-get update && apt-get install -y cron
+
+# Kopiere den Cronjob in die Crontab (fügt einen neuen Job hinzu, der jede Stunde das Python-Skript ausführt)
+RUN echo "0 * * * * python /tkf_plotter/plotter-app/app.py >> /var/log/cron.log 2>&1" > /etc/cron.d/tkf_plotter_cron
+
+# Gib dem Cronjob die nötigen Rechte
+RUN chmod 0644 /etc/cron.d/tkf_plotter_cron
+
+# Trage den Cronjob in die Crontab ein
+RUN crontab /etc/cron.d/tkf_plotter_cron
+
+# Erstelle ein Logfile, damit Cron keine Fehlermeldung ausgibt
+RUN touch /var/log/cron.log
+
+# Starte den Cron-Dienst im Vordergrund (damit der Container nicht stoppt)
+CMD cron && tail -f /var/log/cron.log
