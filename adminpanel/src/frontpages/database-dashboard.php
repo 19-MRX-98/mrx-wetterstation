@@ -10,17 +10,10 @@
         <script src="js/sidebar.js" async></script>
         <script src="js/colormode.js" async></script>
         <script src="js/darkmode.js" async></script>
-        <script src="src/chartjs_4.4/dist/chart.umd.js"></script>
-        <title>Cloudpanel - Lizenzverwaltung</title>   
+        <script src="chartjs_4.4/dist/chart.umd.js"></script>
+        <title>Datenbanken</title>   
     </head>
     <body>
         <?php include("html/nav.php") ?>
-        <div class="card">
-  <div class="card-body">
-    <div id="chart-demo-line" class="chart-lg"></div>
-  </div>
-</div>
-
-
     </body>
 <html>

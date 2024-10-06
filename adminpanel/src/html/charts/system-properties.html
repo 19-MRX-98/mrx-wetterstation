@@ -1,0 +1,123 @@
+<div class="dashboard-container">
+    <!-- CPU Usage Chart -->
+    <div class="chart-container">
+        <canvas id="cpuChart"></canvas>
+    </div>
+
+    <!-- Memory Usage Chart -->
+    <div class="chart-container">
+        <canvas id="memoryChart"></canvas>
+    </div>
+
+    <!-- HDD Usage Chart -->
+    <div class="chart-container">
+        <canvas id="hddChart"></canvas>
+    </div>
+
+    <!-- Network Usage Chart -->
+    <div class="chart-container">
+        <canvas id="networkChart"></canvas>
+    </div>
+</div>
+
+<script>
+    // Fetch data from the PHP script
+    async function fetchSystemStats() {
+        const response = await fetch('php/module/system-properties.php');
+        const data = await response.json();
+        return data;
+    }
+
+    // Update charts with the new data
+    async function updateCharts() {
+        const data = await fetchSystemStats();
+
+        // CPU Usage Chart
+        const cpuChart = new Chart(document.getElementById('cpuChart').getContext('2d'), {
+            type: 'doughnut',
+            data: {
+                labels: ['CPU Usage', 'Idle'],
+                datasets: [{
+                    data: [data.cpu, 100 - data.cpu],
+                    backgroundColor: ['#FF6384', '#36A2EB']
+                }]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    text: 'CPU Usage (%)'
+                }
+            }
+        });
+
+        // Memory Usage Chart
+        const memoryChart = new Chart(document.getElementById('memoryChart').getContext('2d'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Used Memory', 'Free Memory'],
+                datasets: [{
+                    data: [data.mem_used, data.mem_free],
+                    backgroundColor: ['#FFCE56', '#4BC0C0']
+                }]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    text: 'Memory Usage (GB)'
+                }
+            }
+        });
+
+        // HDD Usage Chart
+        const hddChart = new Chart(document.getElementById('hddChart').getContext('2d'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Used HDD', 'Free HDD'],
+                datasets: [{
+                    data: [data.hdd_used, data.hdd_free],
+                    backgroundColor: ['#FF6384', '#36A2EB']
+                }]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    text: 'HDD Usage (GB)'
+                }
+            }
+        });
+
+        // Network Usage Chart
+        const networkChart = new Chart(document.getElementById('networkChart').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ['RX (GB)', 'TX (GB)'],
+                datasets: [{
+                    label: 'Network Usage',
+                    data: [data.network_rx, data.network_tx],
+                    backgroundColor: ['#36A2EB', '#FF6384']
+                }]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    text: 'Network Usage (GB)'
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    }
+
+    // Initial load
+    updateCharts();
+
+    // Set interval to refresh data every 5 seconds
+    setInterval(updateCharts, 5000);
+</script>

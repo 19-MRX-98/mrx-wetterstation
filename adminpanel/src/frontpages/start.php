@@ -9,6 +9,7 @@
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="css/sidebar.css">
+        <script src="chartjs_4.4/dist/chart.umd.js"></script>
         <script src="js/bootstrap.bundle.min.js" async></script>
         <script src="js/sidebar.js" async></script>
         <script src="js/colormode.js" async></script>
@@ -23,9 +24,11 @@
                 <div class="col-3 p-3 mb-2">
                     <h1>Container</h1>
                     <?php include("php/functions/show_containerstatus.php") ?>
+                    
                 </div>
                 <div class="col-sm-9 p-3">
-                    
+                    <h1>Systemmetriken</h1>
+                    <?php include("html/charts/system-properties.html")?>
                     <?php include("php/module/read_logfile.php") ?>
                 </div>
             </div>

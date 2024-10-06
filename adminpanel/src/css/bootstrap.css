@@ -12088,5 +12088,18 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-
+/*systemproperties*/
+.dashboard-container {
+  display: flex; /* Flexbox Layout für nebeneinander Anordnung */
+  justify-content: space-around; /* Platz zwischen den Diagrammen */
+  flex-wrap: wrap; /* Wrap für mobile Geräte, falls der Platz nicht ausreicht */
+}
+.chart-container {
+  width: 10%; /* Breite jedes Diagramms, hier 45% für 2 Diagramme nebeneinander */
+  margin: 10px;
+}
+canvas {
+  max-width: 100%; /* Damit das Diagramm die volle Breite des Containers einnimmt */
+  height: auto; /* Automatische Höhe */
+}
 /*# sourceMappingURL=bootstrap.css.map */

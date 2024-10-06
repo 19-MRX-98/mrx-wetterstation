@@ -40,6 +40,9 @@ Route::add('/crontab',function(){
     $ini = parse_ini_file("/tkf_ini/comserver.ini");
     include($ini['crontabui']);
 });
+Route::add('/test',function(){
+    include("html/charts/system-properties.html");
+});
 Route::add('/17c59beb8da0a081f2ed7335a17aad273eb84755',function(){
     include("php/module/check_for_db.php");
 },'post');
