@@ -25,7 +25,8 @@
     - Konfiguration des Adminpanels via .ini Datei
     - Konfiguration des Dockercontainers des Adminpanels
     - Authentifizierungstoken für Cloudanbindung
-    - 
+    - RSA Key Generator
+    
 
 ---
 ### Features in Erstellung
@@ -40,3 +41,5 @@
     - Entpacken in vorgesehene Verzeichnisse 
     - Anzeige, das Update für Modul verfügbar ist
     - Readme.md interpretieren
+- RSA Authentifizierung am Updateserver
+- Admin Recht für zum Aktivieren oder Deaktivieren von Boostrap Tags
