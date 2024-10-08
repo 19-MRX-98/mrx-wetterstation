@@ -1,15 +1,15 @@
 <?php
-    require_once("src/conf/config.inc.php");
-    function airpressure_trend($dbsrv,$dbuser,$passwd,$database){
+    $db = connect_to_db($dbsrv, $dbuser, $passwd, $database);
+    function airpressure_trend($db){
         $today = date("Y-m-d");
         $limiter = 8;
-        $conn = new mysqli($dbsrv,$dbuser,$passwd,$database);
+
         // Überprüfen der Verbindung
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
+        if ($db->connect_error) {
+            die("Connection failed: " . $db->connect_error);
         }
         $sql = "SELECT * FROM airpressure ORDER BY datetime DESC LIMIT $limiter";
-        $result = $conn->query($sql);
+        $result = $db->query($sql);
     
         // Überprüfen, ob Daten vorhanden sind
         if ($result->num_rows > 0) {
@@ -65,7 +65,7 @@
             //echo $s1 = number_format($diff, 0, ".",",")." hPA in den letzten $stunden Stunden";
 
         // Verbindung schließen
-        $conn->close();
+        $db->close();
     }
-airpressure_trend($dbsrv,$dbuser,$passwd,$database);
+airpressure_trend($db);
 ?>

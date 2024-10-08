@@ -1,8 +1,8 @@
 <?php
-
-function windchill($ini,$dbsrv,$dbuser,$passwd,$database)
+$db = connect_to_db($dbsrv, $dbuser, $passwd, $database);
+function windchill($ini,$db)
 {   
-    $db = new mysqli($dbsrv,$dbuser,$passwd,$database);
+
     if($db->connect_errno)
     {
         echo "Keine Verbindung m&ooml;glich! Bitte kontaktieren Sie den Administrator!\n";
@@ -33,5 +33,5 @@ function windchill($ini,$dbsrv,$dbuser,$passwd,$database)
     }
     mysqli_close($db);
 }
-windchill($ini,$dbsrv,$dbuser,$passwd,$database);
+windchill($ini,$db);
 ?>

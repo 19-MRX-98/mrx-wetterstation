@@ -9,7 +9,7 @@ require_once('src/php/modules/airpressure.php');
 //require_once("src/php/modules/functions/func_trends.php");
 
 
-		$db = new mysqli($dbsrv,$dbuser,$passwd,$database);
+		$db = connect_to_db($dbsrv, $dbuser, $passwd, $database);
 		if($db->connect_errno)
 				{
 					echo "";

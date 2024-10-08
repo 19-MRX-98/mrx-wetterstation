@@ -1,6 +1,6 @@
 <?php
 	if($ini['airpressure_module'] == 1){
-		$db_c = new mysqli($dbsrv,$dbuser,$passwd,$database);
+		$db_c = connect_to_db($dbsrv, $dbuser, $passwd, $database);
 		if($db_c->connect_errno)
 				{
 					echo "Keine Verbindung m&ooml;glich! Bitte kontaktieren Sie den Administrator!\n";

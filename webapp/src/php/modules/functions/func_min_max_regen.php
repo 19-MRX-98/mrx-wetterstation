@@ -1,9 +1,8 @@
 <?php
-    require_once("src/conf/config.inc.php");
+$db = connect_to_db($dbsrv, $dbuser, $passwd, $database);
 
-    function fetch_data_min_max_regen($dbsrv,$dbuser,$passwd,$database){
+    function fetch_data_min_max_regen($conn){
         $date = date("d.m.Y");
-        $conn = new mysqli($dbsrv,$dbuser,$passwd,$database);
 
         // Überprüfen, ob die Verbindung erfolgreich hergestellt wurde
         if ($conn->connect_error) {
@@ -66,5 +65,5 @@
         }
         mysqli_close($conn);
     }
-    fetch_data_min_max_regen($dbsrv,$dbuser,$passwd,$database);
+    fetch_data_min_max_regen($conn);
 ?>

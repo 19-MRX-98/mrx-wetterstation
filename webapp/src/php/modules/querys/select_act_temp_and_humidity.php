@@ -1,7 +1,6 @@
 <?php
-    $conn = new mysqli($dbsrv,$dbuser,$passwd,$database); //Create Database Conenction
+    $conn = connect_to_db($dbsrv, $dbuser, $passwd, $database); //Create Database Conenction
 
-    
     $select_temp_and_humidity = "SELECT Temperatur, Feuchte FROM $database.wetterdaten01 ORDER BY datetime DESC LIMIT 1";
     $result = $conn->query($select_temp_and_humidity);
 

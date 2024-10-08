@@ -1,8 +1,8 @@
 <?php
+$db = connect_to_db($dbsrv, $dbuser, $passwd, $database);
 
-require_once("src/conf/config.inc.php");
-    function avg_month($dbsrv,$dbuser,$passwd,$database){
-        $db = new mysqli($dbsrv,$dbuser,$passwd,$database);
+    function avg_month($db){
+
         if($db->connect_errno)
             {
                 echo "Keine Verbindung m&ooml;glich! Bitte kontaktieren Sie den Administrator!\n";
@@ -84,6 +84,6 @@ require_once("src/conf/config.inc.php");
             }
     mysqli_close($db);
     }
-avg_month($dbsrv,$dbuser,$passwd,$database);
+avg_month($db);
     
 ?>

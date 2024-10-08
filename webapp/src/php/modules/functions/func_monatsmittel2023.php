@@ -1,8 +1,8 @@
 <?php
-require_once("src/php/globals/global_functions.php");
-function avg_month($dbsrv, $dbuser, $passwd, $database) {
+$db = connect_to_db($dbsrv, $dbuser, $passwd, $database);
+
+function avg_month($db) {
     // Verbindung zur Datenbank herstellen
-    $db = connect_to_db($dbsrv, $dbuser, $passwd, $database);
     if ($db->connect_errno) {
         echo "Keine Verbindung möglich! Bitte kontaktieren Sie den Administrator!\n";
         echo "Fehler " . $db->connect_errno . ": " . $db->connect_error;
@@ -83,5 +83,5 @@ function avg_month($dbsrv, $dbuser, $passwd, $database) {
 }
 
 // Funktion aufrufen
-avg_month($dbsrv, $dbuser, $passwd, $database);
+avg_month($db);
 ?>

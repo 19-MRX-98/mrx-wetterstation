@@ -1,11 +1,12 @@
 <?php
-function rainfall_actual($ini,$dbsrv,$dbuser,$passwd,$database)
+$db = connect_to_db($dbsrv, $dbuser, $passwd, $database);
+function rainfall_actual($db)
 {
     $zeitstempel = time();
     $Zeit_back05 = $zeitstempel - (20 * 60);
     $old_time=date("Y-m-d H:i:s.000000", $Zeit_back05);
     $actual_time = date("Y-m-d H:i:s.000000", $zeitstempel);
-    $db = new mysqli($dbsrv,$dbuser,$passwd,$database);
+
 		if($db->connect_errno)
 				{
 					echo "Keine Verbindung m&ooml;glich! Bitte kontaktieren Sie den Administrator!\n";
@@ -40,5 +41,5 @@ function rainfall_actual($ini,$dbsrv,$dbuser,$passwd,$database)
                 }  
                 mysqli_close($db);
 }
-rainfall_actual($ini,$dbsrv,$dbuser,$passwd,$database);
+rainfall_actual($db);
 ?>

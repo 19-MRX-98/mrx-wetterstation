@@ -2,7 +2,7 @@
 // Verbindung zur Datenbank herstellen
 
 require_once("functions/func_dewpoint.php");
-$conn = new mysqli($dbsrv,$dbuser,$passwd,$database);
+$conn = connect_to_db($dbsrv, $dbuser, $passwd, $database);
 
 // Taupunkt und Wolkengrenze berechnen
 $sql = "SELECT Temperatur, Feuchte FROM $database.wetterdaten01 ORDER BY datetime DESC LIMIT 1";

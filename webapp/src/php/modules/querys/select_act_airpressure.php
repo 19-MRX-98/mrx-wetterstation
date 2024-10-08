@@ -1,5 +1,5 @@
 <?php
-    $conn = new mysqli($dbsrv,$dbuser,$passwd,$database); //Create Database Co0nnection
+    $conn =  connect_to_db($dbsrv, $dbuser, $passwd, $database); //Create Database Co0nnection
     $sql1 = "SELECT airpressure FROM $database.airpressure ORDER BY datetime DESC LIMIT 1";
     $result = $conn->query($sql1);
 
