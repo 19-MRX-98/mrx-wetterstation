@@ -42,7 +42,7 @@
                   <li>
                     <hr class="dropdown-divider">
                   </li>
-                  <li><a class="dropdown-item disabled" href="/rain">Niederschlag 2024</a></li>
+                  <li><a class="dropdown-item disabled" href="/rain24">Niederschlag 2024</a></li>
                   <li><a class="dropdown-item" href="/rain">Niederschlag 2024</a></li>
                   <li><a class="dropdown-item" href="/rain23">Niederschlag 2023</a></li>
                   <li>

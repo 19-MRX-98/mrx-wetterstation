@@ -57,7 +57,7 @@ function avg_month($dbsrv, $dbuser, $passwd, $database) {
                         <td>
                             <center>";
                             $differenz = round($data[2],2);
-                            if($differenz >= '0' && $differenz <= '0.5'){
+                            if($differenz >= '-4' && $differenz <= '0.5'){
                                 echo "<center><button type='button' class='btn btn-primary'>". round($differenz,2)."</button></center>";
                             }
                             elseif($differenz > '0.5' && $differenz <= '1.0'){

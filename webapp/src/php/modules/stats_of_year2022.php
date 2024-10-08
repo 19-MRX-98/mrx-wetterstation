@@ -1,6 +1,6 @@
 <?php
                     $actual_year = date("Y");
-                    $db = new mysqli($dbsrv,$dbuser,$passwd,$database);
+                    $db = connect_to_db($dbsrv, $dbuser, $passwd, $database);
                     if($db->connect_errno)
                             {
                                 echo "Keine Verbindung m&ooml;glich! Bitte kontaktieren Sie den Administrator!\n";
@@ -30,7 +30,7 @@
                                                     Höchste Temperatur
                                                     </td>
                                                     <td>
-                                                        ".$data1[0]/umrechnung_temp."°C
+                                                        ".$data1[0]/$ini['umrechnung_temp']."°C
                                                     </td>
                                                     <td>
                                                     $data1[1]
@@ -50,7 +50,7 @@
                                                         Tiefste Temperatur
                                                     </td>
                                                     <td>
-                                                    ".$data4[0]/umrechnung_temp." °C
+                                                    ".$data4[0]/$ini['umrechnung_temp']." °C
                                                     </td>
                                                     <td>
                                                     $data4[1]
@@ -69,7 +69,7 @@
                                                         Stärkste Böe
                                                     </td>
                                                     <td>
-                                                        ".$data2[0]/umrechnung_wind_spitzen1*umrechnung_wind_spitzen2." km/h
+                                                        ".$data2[0]/$ini['umrechnung_wind_spitzen1']*$ini['umrechnung_wind_spitzen2']." km/h
                                                     </td>
                                                     <td>
                                                         $data2[1]
@@ -88,7 +88,7 @@
                                                     Jahresniederschlag
                                                 </td>
                                                 <td>
-                                                    ".$data_4[0]/umrechnung_niederschlag." L/m²
+                                                    ".$data_4[0]/$ini['umrechnung_niederschlag']." L/m²
                                                 </td>
                                                 <td>
                                                     per 31.12.2022
@@ -105,7 +105,7 @@
                                                 Jahresmitteltemperatur
                                             </td>
                                             <td>
-                                                ".round($data_AVGYEAR[0]/umrechnung_temp,2)."°C
+                                                ".round($data_AVGYEAR[0]/$ini['umrechnung_temp'],2)."°C
                                             </td>
                                             <td>
                                             per 31.12.2022
@@ -191,7 +191,7 @@
                                             Höchster Luftdruck
                                         </td>
                                         <td>
-                                            ".round($data_max_pressure[1]/umrechnung_luftdruck,0)." hPA
+                                            ".round($data_max_pressure[1]/$ini['umrechnung_luftdruck'],0)." hPA
                                         </td>
                                         <td>
                                             ".$data_max_pressure[0]."
@@ -208,7 +208,7 @@
                                             Tiefster Luftdruck
                                         </td>
                                         <td>
-                                            ".round($data_min_pressure[1]/umrechnung_luftdruck,0)." hPA
+                                            ".round($data_min_pressure[1]/$ini['umrechnung_luftdruck'],0)." hPA
                                         </td>
                                         <td>
                                             ".$data_min_pressure[0]."
@@ -225,7 +225,7 @@
                                             Mittlerer Luftdruck
                                         </td>
                                         <td>
-                                            ".round($data_avg_pressure[1]/umrechnung_luftdruck,0)." hPA
+                                            ".round($data_avg_pressure[1]/$ini['umrechnung_luftdruck'],0)." hPA
                                         </td>
                                         <td>
                                             per 31.12.2022

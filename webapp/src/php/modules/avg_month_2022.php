@@ -1,6 +1,5 @@
 <?php
-require_once("/var/www/html/src/conf/config.inc.php");
-    $db_conn = new mysqli($dbsrv,$dbuser,$passwd,$database);
+    $db_conn = connect_to_db($dbsrv, $dbuser, $passwd, $database);
     if($db_conn->connect_errno)
         {
             echo "Keine Verbindung m&ooml;glich! Bitte kontaktieren Sie den Administrator!\n";
@@ -21,7 +20,7 @@ require_once("/var/www/html/src/conf/config.inc.php");
                         </thead>
                         <tr>
                             <td>
-                                $data_avg_[0]
+                                $data_avg[0]
                             </td>
                             <td>
                                 $avg1

@@ -15,8 +15,7 @@
         <?php include("$header_path");?>
     </head>
     <body>
-        <center><h1><span class="badge bg-dark"></span>Monatsmittel 2023</h1></center>
-        <?php include("src/php/modules/avg_month_2023.php"); ?>
-        <img src="src/php/jpgaph_diagrams/jpg/avg_chart_2023.jpg" class="img-fluid" alt="..."/>
+        <center><h1><span class="badge bg-dark"></span>Niederschlag 2023</h1></center>
+        <?php include("src/php/modules/functions/func_rainfall_2024.php"); ?>
     </body>
 </html>

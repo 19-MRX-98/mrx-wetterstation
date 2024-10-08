@@ -1,11 +1,11 @@
 <?php
-    require_once("src/conf/config.inc.php");
-    function gruenlandtemperatursumme($dbsrv,$dbuser,$passwd,$database){
+$db = connect_to_db($dbsrv, $dbuser, $passwd, $database);
+    function gruenlandtemperatursumme($db){
         $gts_1="200";
         $gts_2= "400";
         $gts_3= "500";
         $gts_4= "700";
-        $db = new mysqli($dbsrv,$dbuser,$passwd,$database);
+        
             if($db->connect_errno)
                     {
                         echo "Keine Verbindung m&ooml;glich! Bitte kontaktieren Sie den Administrator!\n";
@@ -244,7 +244,7 @@
                                                                     </center>
             
                                                                 <div class='alert alert-light' role='alert'>
-                                                                    <center> <button type='button' class='btn btn-primary'>$fehlend4 °C </button></center>
+                                                                    <center> <button type='button' class='btn btn-primary'>fehlend4 °C </button></center>
                                                                     <br>
                                                                     <center>
                                                                         <div class='alert alert-info' role='alert'>
@@ -262,5 +262,5 @@
 
 
         }
-    gruenlandtemperatursumme($dbsrv,$dbuser,$passwd,$database);
+    gruenlandtemperatursumme($db);
 ?>

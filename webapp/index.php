@@ -23,6 +23,9 @@ Route::add('/rain',function(){
 Route::add('/rain23',function(){
     include("src/frontpages/rain_2023.php");
 });
+Route::add('/rain24',function(){
+    include("src/frontpages/rain_2024.php");
+});
 Route::add('/raindeepdive',function(){
     include("php_modules/rain_deepdive.php");
 });

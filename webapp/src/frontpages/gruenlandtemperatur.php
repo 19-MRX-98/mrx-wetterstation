@@ -1,8 +1,5 @@
 <?php
-$ini = parse_ini_file("/var/www/html/src/conf/webapp.ini");
-   require 'src/php/analog/lib/Analog.php';
-   require_once("/var/www/html/src/conf/config.inc.php");
-   require_once("src/php/modules/log_modules/log_http_client_info.php");
+    require_once("/var/www/html/src/php/globals/global_functions.php");
 ?>
 <!DOCTYPE html>
 <html lang="de" data-bs-theme="dark">

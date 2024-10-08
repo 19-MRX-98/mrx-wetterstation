@@ -28,6 +28,7 @@
     - Tageswerte
     - Modernisierung der Ausgabe der Jahreswerte, Monatsmittel etc.
     - Teilweise Implementierung zur Nutzung einer .ini Datei, dieses Feature wird in den nächsten Updates weiter ausgebaut
+    - Neue Funktion zur Berechnung des Niederschlags
     
 
 ---
@@ -36,6 +37,7 @@
 - Link heutiger Tag
 - Eigene Seite Tageswerte
 - Einige Scripts
+- Scripte für Berechnung des Regens
 
 ---
 ### PHP
@@ -56,6 +58,7 @@
     - calc_1500m_temp($gerechnete_temperatur,$wolkenbasistemperatur,$hc) | Berechnet die 850hpa Temperatur
     - calc_3000m_temp($gerechnete_temperatur,$wolkenbasistemperatur,$hc) | Berechnet die 700hpa Temperatur
     - calc_5500m_temp($gerechnete_temperatur,$wolkenbasistemperatur,$hc) | Berechnet die 500hpa Temperatur
+    - berechneMonatlichenNiederschlag($pdo) | Errechnet den Monatlichen Niederschlag
 - <span style="color:red">neue PHP Module:</span>
     - theta-e.php
     - zambretti-forecast.php

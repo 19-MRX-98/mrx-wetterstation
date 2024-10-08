@@ -1,6 +1,5 @@
 <?php
-    require_once("/var/www/html/src/conf/config.inc.php");
-    $conn = new mysqli($dbsrv,$dbuser,$passwd,$database);
+    $conn = connect_to_db($dbsrv, $dbuser, $passwd, $database);
     $konstante_a = 17.27;
     $konstante_b = 237.7;
     // Funktion zur Berechnung des Taupunkts
