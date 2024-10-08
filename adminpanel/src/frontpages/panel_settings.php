@@ -65,12 +65,12 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-                            ?!
+                            Schlüsselpaar generieren
                         </button>
                         </h2>
                         <div id="flush-collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionFlush">
                             <div class="accordion-body">
-                                <?php //include("php/module/parse_docker_env.php"); ?>
+                                <?php include("php/functions/generate_keypair.php"); ?>
                             </div>
                         </div>
                     </div>
