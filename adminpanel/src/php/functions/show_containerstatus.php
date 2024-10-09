@@ -68,7 +68,6 @@
             logs("Keine Container gefunden, bitte System überprüfen","FATAL");
         }
     }
-
     // Aufruf der Funktion, um Container-Status zu erhalten und auszugeben
     getDockerContainerStatus();
 ?>

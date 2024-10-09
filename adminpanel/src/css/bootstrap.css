@@ -12102,4 +12102,8 @@ canvas {
   max-width: 100%; /* Damit das Diagramm die volle Breite des Containers einnimmt */
   height: auto; /* Automatische Höhe */
 }
+.bg-success {
+  --bs-bg-opacity: 1;
+  background-color: rgba(var(--bs-success-rgb), var(--bs-bg-opacity)) !important;
+}
 /*# sourceMappingURL=bootstrap.css.map */

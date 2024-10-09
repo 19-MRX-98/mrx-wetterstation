@@ -6,4 +6,5 @@
         return $uuid;
     }
     echo generateSoftwareUID();
+    
 ?>

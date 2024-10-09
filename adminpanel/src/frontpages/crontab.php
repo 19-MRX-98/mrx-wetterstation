@@ -1,3 +1,6 @@
+<?php
+	require_once("php/globals/global_functions.php");
+?>
 <!DOCTYPE html>
 <html lang="de" data-bs-theme="auto">
     <head>

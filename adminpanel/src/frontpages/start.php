@@ -1,5 +1,5 @@
 <?php
-    require_once("/var/www/html/php/globals/global_functions.php");
+    require_once("php/globals/global_functions.php");
 ?>
 <!DOCTYPE html>
 <html lang="de" data-bs-theme="auto">
