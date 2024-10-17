@@ -43,6 +43,9 @@ Route::add('/crontab',function(){
 Route::add('/test',function(){
     include("html/charts/system-properties.html");
 });
+Route::add('/phpinfo',function(){
+    include("php/debugging/phpinfo.php");
+});
 Route::add('/17c59beb8da0a081f2ed7335a17aad273eb84755',function(){
     include("php/module/check_for_db.php");
 },'post');
