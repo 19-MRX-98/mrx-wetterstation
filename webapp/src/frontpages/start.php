@@ -30,8 +30,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="<?php echo $ini['bootstrap_min_path']; ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo $ini['bootstrap_main_path']; ?>">
+		<link rel="stylesheet" type="text/css" href="<?php echo $ini['chartjs_css']; ?>">
         <script src="<?php echo $bootstrap_min_js ?>" async></script>
 		<script src="<?php echo $ini['newrelic_cookie']; ?>" async></script>
+		<script src="src/chartjs_4.4/dist/chart.umd.js"></script>
+		<script src="src/chartjs_4.4/dist/helpers.js"></script>
         <title>
                 <?php echo $ini["wsname"];?>
         </title><!--Put your Weatherstation's Name in the Configurations PHP-->
@@ -66,8 +69,12 @@
 								</p>
 							</div>
 							<caption><h1><span class="badge bg-dark">5 Tages Vorhersage</span></h1></caption>
-							<div id="openweathermap-widget-21"></div>
-							<script src='//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/d3.min.js'></script><script>window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];  window.myWidgetParam.push({id: 21,cityid: '2945474',appid: '4450ede91f808d165263d1196233a338',units: 'metric',containerid: 'openweathermap-widget-21',  });  (function() {var script = document.createElement('script');script.async = true;script.charset = "utf-8";script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(script, s);  })();</script>
+							<div class="chart-container">
+								<canvas id="weatherChart">
+								<?php include("src/php/modules/functions/func_wettervorhersage.php"); ?>
+								</canvas>
+							</div>
+
 						</div>
 						
 					</div>

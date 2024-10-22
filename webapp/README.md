@@ -12,6 +12,7 @@
 - Startseite überarbeitet 
     - Astronomisches Wetter
     - Wettervorhersage nach Zambretti
+    - Fünf Tages Vorhersage mit Chart Darstellung
     - Athmosphärendaten
         - Berechnung Theta E
            Theta E berechnung zur Vorhersage von möglichen Gewittern oder Unwettern innerhalb von 12-24 Stunden
@@ -67,8 +68,12 @@
 ---
 ### Datenbank
 ---
-- Datenbanktabelle für Statistiken des aktuellen Jahres und vorherige Jahre
-- Datenbanktabelle für Monatsmittel aktuelles Jahr und vorherige Jahre
+- Datenbankupdate auf V3
+
+---
+### CSS
+---
+- neues CSS Script für Chartjs
 
 ---
 ###Features in Erstellung

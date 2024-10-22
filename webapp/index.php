@@ -57,7 +57,7 @@ Route::add('/weather_today',function(){
     include("src/frontpages/weather_today.php");
 });
 Route::add('/tests',function(){
-    include("src/php/modules/stats_of_year.php");
+    include("src/php/modules/functions/func_wettervorhersage.php");
 });
 // Accept only numbers as parameter. Other characters will result in a 404 error
 Route::add('/foo/([0-9]*)/bar',function($var1){

@@ -49,6 +49,11 @@
 	// Andere Variablen
 	$message=''; //Logfile
 
+	//Module
+	$airpressure_module = $ini['airpressure_module'];
+	$uv_module = $ini['uv_module'];
+	$weatherforecast_module = $ini['weatherforecast_module'];
+
 	//Creates Database Connection
 	function connect_to_db($dbsrv, $dbuser, $passwd, $database) {
 		$db = new mysqli($dbsrv, $dbuser, $passwd, $database);
@@ -69,6 +74,7 @@
 			file_put_contents($logfile, $formatted_message, FILE_APPEND);
 	}
 	logs($message);
+
 
 	//Calculates Sunrise in dependency of Latitude, Logitude
 	function astrodate_sun_up($dbsrv,$dbuser,$passwd,$database){
@@ -126,4 +132,45 @@
 				return $sundown;
 			}
 		astrodate_sun_down($dbsrv,$dbuser,$passwd,$database);
+
+
+		//Checks The extra Modules
+		//eg. UV, Airpressure
+
+		function check_uv_module_avail($uv_module){
+			if ($uv_module == "on") {
+				return 1;
+			}
+			else
+			{
+				return 0;
+			}
+		}
+		check_uv_module_avail($uv_module);
+
+		function check_weather_forecast_avail($weatherforecast_module){
+			if ($weatherforecast_module == "on") {
+				return 1;
+			}
+			else
+			{
+				return 0;
+			}
+		}
+		check_weather_forecast_avail($weatherforecast_module);
+
+		function check_airpressure_avail($airpressure_module){
+			if ($airpressure_module == "on") {
+				return 1;
+			}
+			else
+			{
+				return 0;
+			}
+		}
+		check_airpressure_avail($airpressure_module);
+
+		function kelvin_to_celsius($kelvin) {
+			return round($kelvin - 273.15, 1);
+		}
 ?>

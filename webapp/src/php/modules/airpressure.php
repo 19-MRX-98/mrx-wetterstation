@@ -1,5 +1,6 @@
 <?php
-	if($ini['airpressure_module'] == 1){
+	$on = check_airpressure_avail($airpressure_module);
+	if($on === 1){
 		$db_c = connect_to_db($dbsrv, $dbuser, $passwd, $database);
 		if($db_c->connect_errno)
 				{
@@ -18,6 +19,7 @@
                 }
 	}
 	else{
-		echo "Please activate the Airpressuremodule";
+		echo "Bitte das Luftdruckmodul in der Adminkonsole aktivieren";
+		logs("Das Luftdruckmodul ist nicht aktiviert","ERROR");
 	}
-
+?>
