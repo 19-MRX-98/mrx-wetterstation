@@ -11,6 +11,7 @@
           - ${TKF_CP_DOCKER_DEV}:/tkf_cp_docker
           - ${TKF_PLOTTER_LOG_DIR}:/tkf_plotter_logs
           - ${WEBAPP_INI}:/tkf_ini/webapp.ini
+          - ${WEBAPP_LOG_DIR}:/tkf_webapp_logs
           - /var/run/docker.sock:/var/run/docker.sock
         ports:
           - ${STD_WEBSRV_PORT}:80

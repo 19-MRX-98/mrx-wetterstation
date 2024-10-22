@@ -16,7 +16,7 @@
                                 <?php foreach ($values as $key => $value): ?>
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <?php echo htmlspecialchars($key); ?>: <?php echo htmlspecialchars($value); ?>
-                                        <?php if (!in_array($key, non_editable_keys_comserver()) && !in_array($section, non_editable_sections_comserver())): ?>
+                                        <?php if (!in_array($key, non_editable_keys_webapp()) && !in_array($section, non_editable_sections_webapp())): ?>
                                             <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editModal" data-section="<?php echo htmlspecialchars($section); ?>" data-key="<?php echo htmlspecialchars($key); ?>" data-value="<?php echo htmlspecialchars($value); ?>">
                                                 Bearbeiten
                                             </button>

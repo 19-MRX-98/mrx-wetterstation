@@ -1,5 +1,6 @@
 <?php
 $ini = parse_ini_file("config/cloudpanel.ini");
+
 // Load and parse log file
 function parseLogFile($filePath) {
     $logs = [];
@@ -21,9 +22,14 @@ function parseLogFile($filePath) {
 }
 
 $logfile1 = $ini['log_path'];  // First log file path
-$logfile2 = $ini['dbc_log'];  // Second log file path
+$logfile2 = $ini['dbc_log'];   // Second log file path
+$logfile3 = $ini['webapp_log']; // Third log file path
 
-$selectedLog = isset($_GET['logfile']) && $_GET['logfile'] == '2' ? $logfile2 : $logfile1;
+$selectedLog = isset($_GET['logfile']) ? 
+    ($_GET['logfile'] == '3' ? $logfile3 : 
+    ($_GET['logfile'] == '2' ? $logfile2 : $logfile1)) : 
+    $logfile1;
+
 $logs = parseLogFile($selectedLog);
 
 // Pagination
@@ -48,6 +54,7 @@ $logLevelColors = [
             <select id="logfile" name="logfile" class="form-select form-select-sm" onchange="this.form.submit()">
                 <option value="1" <?= $selectedLog == $logfile1 ? 'selected' : '' ?>><?php echo $logfile1 ?></option>
                 <option value="2" <?= $selectedLog == $logfile2 ? 'selected' : '' ?>><?php echo $logfile2 ?></option>
+                <option value="3" <?= $selectedLog == $logfile3 ? 'selected' : '' ?>><?php echo $logfile3 ?></option>
             </select>
         </div>
     </form>
@@ -64,7 +71,7 @@ $logLevelColors = [
         <?php foreach ($logs as $log): ?>
             <tr>
                 <td><?= $log['timestamp'] ?></td>
-                    <span class="badge text-bg-light"><td style="color: <?= $logLevelColors[$log['level']] ?? 'black' ?>;"><?= $log['level'] ?></span></td>
+                <td><span class="badge text-bg-light" style="color: <?= $logLevelColors[$log['level']] ?? 'black' ?>;"><?= $log['level'] ?></span></td>
                 <td><?= $log['message'] ?></td>
             </tr>
         <?php endforeach; ?>

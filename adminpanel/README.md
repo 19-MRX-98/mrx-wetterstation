@@ -17,6 +17,7 @@
     - Ansicht Logs /Auswahl Logs
         - Logs von Adminpanel
         - Logs von Datenbankconnector
+        - Logs von Webapp
     - Konfiguration des Datenbankconnectors via .ini Datei
     - Konfiguration der Wetterstation-Webapp via .ini Datei
         - Highlights: 
